@@ -20,6 +20,7 @@ namespace ParcAuto
             Console.WriteLine();
             Console.WriteLine("Introuduceti datele pentru un utilizator: ");
             Utilizator utilizator = Utilizator.CitireDeLaTastatura();
+
             Console.WriteLine("Utilizatorul introdus: ");
             Console.WriteLine(utilizator.Info());*/
             
