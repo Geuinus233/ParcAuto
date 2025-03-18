@@ -22,15 +22,10 @@ namespace StocareDate
 
         public void AdaugaVehicul(Vehicul vehicul)
         {
-            if (nrVehicule < NR_MAX_VEHICULE)
-            {
+            
                 vehicule[nrVehicule] = vehicul;
                 nrVehicule++;
-            }
-            else
-            {
-                Console.WriteLine("Nu se mai pot adauga vehicule, memoria este plina.");
-            }
+            
         }
 
         public Vehicul[] GetVehicule(out int nrVehicule)
