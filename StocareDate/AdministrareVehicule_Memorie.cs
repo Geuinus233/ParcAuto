@@ -10,37 +10,31 @@ namespace StocareDate
 
     public class AdministrareVehicule_Memorie
     {
-        private const int NR_MAX_VEHICULE = 50;
-        private Vehicul[] vehicule;
-        private int nrVehicule;
+        private List<Vehicul> vehicule;
 
         public AdministrareVehicule_Memorie()
         {
-            vehicule = new Vehicul[NR_MAX_VEHICULE];
-            nrVehicule = 0;
+            vehicule = new List<Vehicul>();
         }
 
         public void AdaugaVehicul(Vehicul vehicul)
         {
-            
-                vehicule[nrVehicule] = vehicul;
-                nrVehicule++;
-            
+            vehicule.Add(vehicul);
         }
 
         public Vehicul[] GetVehicule(out int nrVehicule)
         {
-            nrVehicule = this.nrVehicule;
-            return vehicule;
+            nrVehicule = vehicule.Count;
+            return vehicule.ToArray();
         }
 
-        public Vehicul CautaDupaNumarInmatriculare(string numar)
+        public Vehicul CautaDupaNumarInmatriculare(string numarInmatriculare)
         {
-            for (int i = 0; i < nrVehicule; i++)
+            foreach (Vehicul vehicul in vehicule)
             {
-                if (vehicule[i].NumarInmatriculare.Equals(numar, StringComparison.OrdinalIgnoreCase))
+                if (vehicul.NumarInmatriculare.Equals(numarInmatriculare, StringComparison.OrdinalIgnoreCase))
                 {
-                    return vehicule[i];
+                    return vehicul;
                 }
             }
             return null;
