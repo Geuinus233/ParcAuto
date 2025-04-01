@@ -11,12 +11,9 @@ namespace StocareDate
 
         public AdministrareVehicule_FisierText(string numeFisier)
         {
-            
             this.numeFisier = numeFisier;
             try
             {
-                // se incearca deschiderea fisierului in modul OpenOrCreate
-                // astfel incat sa fie creat daca nu exista
                 using (Stream streamFisierText = File.Open(numeFisier, FileMode.OpenOrCreate))
                 {
                     // Fisierul a fost deschis cu succes
@@ -32,9 +29,6 @@ namespace StocareDate
         {
             try
             {
-                // instructiunea 'using' va apela la final streamWriterFisierText.Close();
-                // al doilea parametru setat la 'true' al constructorului StreamWriter indica
-                // modul 'append' de deschidere al fisierului
                 using (StreamWriter streamWriterFisierText = new StreamWriter(numeFisier, true))
                 {
                     streamWriterFisierText.WriteLine(vehicul.ConversieLaSir_PentruFisier());
@@ -53,13 +47,9 @@ namespace StocareDate
 
             try
             {
-                // instructiunea 'using' va apela streamReader.Close()
                 using (StreamReader streamReader = new StreamReader(numeFisier))
                 {
                     string linieFisier;
-
-                    // citeste cate o linie si creaza un obiect de tip Vehicul
-                    // pe baza datelor din linia citita
                     while ((linieFisier = streamReader.ReadLine()) != null)
                     {
                         vehicule[nrVehicule++] = new Vehicul(linieFisier);
@@ -70,8 +60,32 @@ namespace StocareDate
             {
                 Console.WriteLine("Eroare la citirea din fisier: " + e.Message);
             }
-
+            Array.Resize(ref vehicule, nrVehicule);
             return vehicule;
+        }
+
+        public Vehicul CautaVehiculDupaNumarInmatriculare(string numarInmatriculare)
+        {
+            try
+            {
+                using (StreamReader streamReader = new StreamReader(numeFisier))
+                {
+                    string linieFisier;
+                    while ((linieFisier = streamReader.ReadLine()) != null)
+                    {
+                        Vehicul vehicul = new Vehicul(linieFisier);
+                        if (vehicul.NumarInmatriculare.Equals(numarInmatriculare, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return vehicul;
+                        }
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Eroare la citirea din fisier: " + e.Message);
+            }
+            return null;
         }
     }
 }

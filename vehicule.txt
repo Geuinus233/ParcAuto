@@ -1,0 +1,3 @@
+1;BMW;M5F90;2022;CE7777KC;Perfecta;Albastru
+2;BMW;M5F90;2022;CE7777KC;Perfecta;Albastru
+3;BMW;M5F10;2014;HH0001OO;Huiovaia;Rosu

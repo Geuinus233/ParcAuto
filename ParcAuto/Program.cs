@@ -2,6 +2,7 @@
 using System;
 using System.Configuration;
 using LibrarieModele;
+using System.IO;
 
 namespace ParcAuto
 {
@@ -10,6 +11,9 @@ namespace ParcAuto
         static void Main()
         {
             string numeFisier = ConfigurationManager.AppSettings["NumeFisier"];
+            
+            string locatieFisierSolutie = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            string caleCompletaFisierVehicule = locatieFisierSolutie + "\\" + numeFisier;
             if (string.IsNullOrEmpty(numeFisier))
             {
                 Console.WriteLine("Eroare!!!");
@@ -19,6 +23,7 @@ namespace ParcAuto
             AdministrareVehicule_FisierText administrareVehicule = new AdministrareVehicule_FisierText(numeFisier);
 
             Vehicul vehiculNou = new Vehicul();
+
             int nrVehicul = 0;
 
             string optiune;
@@ -31,7 +36,8 @@ namespace ParcAuto
                 Console.WriteLine("S. Salvare vehicul in fisier");
                 Console.WriteLine("H. Salvare vehicul in memorie");
                 Console.WriteLine("L. Afisare vehicul din memorie");
-                Console.WriteLine("F. Cautare vehicul dupa numar de inmatriculare");
+                Console.WriteLine("F. Cautare vehicul dupa numar de inmatriculare din memorie");
+                Console.WriteLine("G. Cautare vehicul dupa numar de inmatriculare din fisier");
                 Console.WriteLine("X. Inchidere program");
 
                 Console.WriteLine("Alegeti o optiune");
@@ -70,6 +76,19 @@ namespace ParcAuto
                         if (vehiculGasit != null)
                         {
                             Console.WriteLine("Vehicul gasit: " + vehiculGasit.Info());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Vehiculul nu a fost gasit.");
+                        }
+                        break;
+                    case "G":
+                        Console.Write("Introduceti numarul de inmatriculare pentru cautare: ");
+                        string numarCautat1 = Console.ReadLine();
+                        Vehicul vehiculGasit1 = administrareVehicule.CautaVehiculDupaNumarInmatriculare(numarCautat1);
+                        if (vehiculGasit1 != null)
+                        {
+                            Console.WriteLine("Vehicul gasit: " + vehiculGasit1.Info());
                         }
                         else
                         {

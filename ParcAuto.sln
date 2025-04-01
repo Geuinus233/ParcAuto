@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StocareDate", "StocareDate\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarieModele", "LibrarieModele\LibrarieModele.csproj", "{84041F9C-97D5-417B-9F7E-80DA2284C41B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoParc_WindowsForms_UI", "AutoParc_WindowsForms_UI\AutoParc_WindowsForms_UI.csproj", "{6E18A42B-1415-42F2-B2AE-B831524E824A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{84041F9C-97D5-417B-9F7E-80DA2284C41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84041F9C-97D5-417B-9F7E-80DA2284C41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84041F9C-97D5-417B-9F7E-80DA2284C41B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E18A42B-1415-42F2-B2AE-B831524E824A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E18A42B-1415-42F2-B2AE-B831524E824A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E18A42B-1415-42F2-B2AE-B831524E824A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E18A42B-1415-42F2-B2AE-B831524E824A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

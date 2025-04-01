@@ -36,7 +36,7 @@ namespace LibrarieModele
             AnFabricatie = 0;
             NumarInmatriculare = string.Empty;
             StareTehnica = "Necunoscut";
-            Culoare = Culoare.Gri;
+            Culoare = Culoare.Rosu;
         }
 
         // Constructor cu parametri
