@@ -1,3 +1,5 @@
 1;BMW;M5F90;2022;CE7777KC;Perfecta;Albastru
 2;BMW;M5F90;2022;CE7777KC;Perfecta;Albastru
 3;BMW;M5F10;2014;HH0001OO;Huiovaia;Rosu
+4;Opel;Vectra B;2002;;;Alb
+5;Bugatti;Chiron;2020;;;Alb
