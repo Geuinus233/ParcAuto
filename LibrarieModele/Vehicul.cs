@@ -67,7 +67,7 @@ namespace LibrarieModele
 
         public string Info()
         {
-            return $"ID: {ID}, Marca: {Marca}, Model: {Model}, An: {AnFabricatie}, Nr. Inmatriculare: {NumarInmatriculare}, Stare: {StareTehnica}, Culoare: {Culoare}";
+            return $"ID: {ID}\n Marca: {Marca}\n Model: {Model}\n An: {AnFabricatie}\n Nr. Inmatriculare: {NumarInmatriculare}\n Stare: {StareTehnica}\n Culoare: {Culoare}";
         }
 
         public string ConversieLaSir_PentruFisier()

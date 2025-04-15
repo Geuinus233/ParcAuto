@@ -59,25 +59,5 @@ namespace AutoParc_WindowsForms_UI.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ezgif_5a6eff596e6acd {
-            get {
-                object obj = ResourceManager.GetObject("ezgif-5a6eff596e6acd", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ukraine {
-            get {
-                object obj = ResourceManager.GetObject("ukraine", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

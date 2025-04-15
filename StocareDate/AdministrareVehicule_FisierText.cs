@@ -87,5 +87,27 @@ namespace StocareDate
             }
             return null;
         }
+        public Vehicul GetCar(int ID)
+        {
+            // Folosește 'using' pentru a închide automat StreamReader
+            using (StreamReader streamReader = new StreamReader(numeFisier))
+            {
+                string linieFisier;
+
+                // Citește fiecare linie din fișier
+                while ((linieFisier = streamReader.ReadLine()) != null)
+                {
+                    // Creează un obiect de tip Comanda pe baza liniei citite
+                    Vehicul vehicul = new Vehicul(linieFisier);
+
+                    // Verifică dacă ID-ul comenzii corespunde
+                    if (vehicul.ID == ID)
+                        return vehicul;
+                }
+            }
+
+            // Returnează null dacă nu a fost găsită nicio comandă cu ID-ul specificat
+            return null;
+        }
     }
 }
