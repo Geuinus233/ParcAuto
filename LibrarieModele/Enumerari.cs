@@ -16,6 +16,7 @@ using System.Threading.Tasks;
             Albastru = 4,
             Verde = 5,
             Galben = 6,
-            Gri = 7
-        }
+            Gri = 7,
+            Necunoscut = 8
+    }
     }

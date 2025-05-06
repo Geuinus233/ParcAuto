@@ -46,7 +46,7 @@ namespace ParcAuto
                 switch (optiune.ToUpper())
                 {
                     case "C":
-                        vehiculNou = Vehicul.CitireDelaTastatura();
+                        //vehiculNou = Vehicul.CitireDelaTastatura();
                         break;
                     case "I":
                         AfisareVehicul(vehiculNou);

@@ -5,6 +5,9 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Data;
+using System.Collections;
 
 
 namespace AutoParc_WindowsForms_UI
@@ -14,7 +17,7 @@ namespace AutoParc_WindowsForms_UI
         private AdministrareVehicule_FisierText gestiuneAuto;
 
         
-        
+
 
         private const int LATIME_CONTROL = 150;
         private const int DIMENSIUNE_PAS_Y = 40;
@@ -68,7 +71,7 @@ namespace AutoParc_WindowsForms_UI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            AfisareVehicule();
+            
         }
 
         
@@ -96,7 +99,7 @@ namespace AutoParc_WindowsForms_UI
                 pozitieY++;
             }
         }
-
+        
         private void AdaugaLabelDinamic(string text, int pozitieX, int pozitieY)
         {
             Label label = new Label
@@ -109,14 +112,54 @@ namespace AutoParc_WindowsForms_UI
             this.Controls.Add(label);
         }
 
-        
-      
 
-        
+        private void AfisareMasiniInControlDataGridView()
+        {
+            dataGridVeh.DataSource = null;
+            Vehicul[] vehicule = gestiuneAuto.GetVehicule(out int nrVehicule);
+
+            if (vehicule.Length == 0)
+            {
+                MessageBox.Show("Nu exista studenti in fisier!");
+                return;
+            }
+
+            DataTable dataTable = new DataTable();
+
+            dataTable.Columns.Add("ID");
+            dataTable.Columns.Add("Marca");
+            dataTable.Columns.Add("Model");
+            dataTable.Columns.Add("An");
+            dataTable.Columns.Add("Numar Inmatriculare");
+            dataTable.Columns.Add("Stare Tehnica");
+            dataTable.Columns.Add("Culoare");
+            dataTable.Columns.Add("Optiuni");
+            foreach (Vehicul vehicul in vehicule)
+            {
+                DataRow row = dataTable.NewRow();
+                row["ID"] = vehicul.ID;
+                row["Marca"] = vehicul.Marca;
+                row["Model"] = vehicul.Model;
+                row["An"] = vehicul.AnFabricatie;
+                row["Numar Inmatriculare"] = vehicul.NumarInmatriculare;
+                row["Stare Tehnica"] = vehicul.StareTehnica;
+                row["Culoare"] = vehicul.GetCuloareToString();
+                row["Optiuni"] = vehicul.OptiuniVehiculeToString();
+
+                dataTable.Rows.Add(row);
+            }
+
+            dataGridVeh.DataSource = dataTable;
+        }
+
+
+
+
 
         private void btnRefresh_Click_1(object sender, EventArgs e)
         {
-            AfisareVehicule();
+            Vehicul[] vehicule = gestiuneAuto.GetVehicule(out int nrVehicule);
+            AfisareMasiniInControlDataGridView();
         }
 
         private void btnCautare_Click(object sender, EventArgs e)
