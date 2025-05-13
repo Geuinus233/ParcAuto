@@ -167,6 +167,18 @@ namespace AutoParc_WindowsForms_UI
             Form3 form3 = new Form3();
             form3.Show();
         }
+
+        private void btnMod_Click(object sender, EventArgs e)
+        {
+            if  (dataGridVeh.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selectati o comanda pentru a o modifica.");
+                return;
+            }
+            
+            FormModificare form5 = new FormModificare(Convert.ToInt32(dataGridVeh.CurrentRow.Cells[0].Value));
+            form5.Show();
+        }
     }
 }
 

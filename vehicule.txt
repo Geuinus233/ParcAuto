@@ -1,3 +1,2 @@
-1;BMW;E60 535d;2009;SV879ED;Perfecta;Necunoscut;Cruise control,Camera 360°
-2;Audi;A6 3,0TFSI;2007;CE7777AA;Buna;Rosu;Incalzire scaune,Senzori de parcare,Keyless Entry & Start,Cruise control
-3;Mercedes;GLC300d;2021;B900ZED;Rea;Albastru;Incalzire scaune,Cruise control,Senzori de parcare,Keyless Entry & Start,Android Auto/ Apple CarPlay,Camera 360°
+1;Audi;A6 3.0d;2018;HD888AUD;Normala;Rosu;Cruise control,Android Auto/ Apple CarPlay,Camera 360°,Senzori de parcare,Incalzire scaune,Keyless Entry & Start
+2;Dacia;Logan;2019;B952SVH;Perfecta;Albastru;Android Auto/ Apple CarPlay,Camera 360°,Cruise control,Incalzire scaune

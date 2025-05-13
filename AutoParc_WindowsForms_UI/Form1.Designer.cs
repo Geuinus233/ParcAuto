@@ -34,6 +34,7 @@ namespace AutoParc_WindowsForms_UI
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCautare = new System.Windows.Forms.Button();
             this.dataGridVeh = new System.Windows.Forms.DataGridView();
+            this.btnMod = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVeh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,8 +75,19 @@ namespace AutoParc_WindowsForms_UI
             this.dataGridVeh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridVeh.Location = new System.Drawing.Point(40, 46);
             this.dataGridVeh.Name = "dataGridVeh";
+            this.dataGridVeh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridVeh.Size = new System.Drawing.Size(870, 235);
             this.dataGridVeh.TabIndex = 7;
+            // 
+            // btnMod
+            // 
+            this.btnMod.Location = new System.Drawing.Point(389, 328);
+            this.btnMod.Name = "btnMod";
+            this.btnMod.Size = new System.Drawing.Size(79, 45);
+            this.btnMod.TabIndex = 8;
+            this.btnMod.Text = "Modifica";
+            this.btnMod.UseVisualStyleBackColor = true;
+            this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
             // 
             // Form1
             // 
@@ -85,6 +97,7 @@ namespace AutoParc_WindowsForms_UI
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.btnMod);
             this.Controls.Add(this.dataGridVeh);
             this.Controls.Add(this.btnCautare);
             this.Controls.Add(this.btnRefresh);
@@ -103,6 +116,7 @@ namespace AutoParc_WindowsForms_UI
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnCautare;
         private System.Windows.Forms.DataGridView dataGridVeh;
+        private System.Windows.Forms.Button btnMod;
     }
 }
 
