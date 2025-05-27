@@ -111,7 +111,7 @@ namespace StocareDate
             return null;
         }
        
- public bool UpdateVehicul(Vehicul vehiculActualizat)
+        public bool UpdateVehicul(Vehicul vehiculActualizat)
         {
             Vehicul[] vehicule = GetVehicule(out int nrVehicule);
             bool actualizare = false;
@@ -131,8 +131,45 @@ namespace StocareDate
             }
             return actualizare;
         }
-        
-        
+
+        public bool StergeVehicul(int id)
+        {
+            Vehicul[] vehicule = GetVehicule(out int nrVehicule);
+            bool sters = false;
+
+            using (StreamWriter sw = new StreamWriter(numeFisier, false))
+            {
+                foreach (var vehicul in vehicule)
+                {
+                    if (vehicul.ID != id)
+                    {
+                        sw.WriteLine(vehicul.ConversieLaSir_PentruFisier());
+                    }
+                    else
+                    {
+                        sters = true;
+                    }
+                }
+            }
+            return sters;
+        }
+
+
+        public Vehicul[] CautaVehiculeDupaModel(string modelCautat, out int nrGasite)
+        {
+            Vehicul[] toateVehiculele = GetVehicule(out int nrVehicule);
+            List<Vehicul> rezultate = new List<Vehicul>();
+
+            foreach (var vehicul in toateVehiculele)
+            {
+                if (vehicul.Model.Equals(modelCautat, StringComparison.OrdinalIgnoreCase))
+                {
+                    rezultate.Add(vehicul);
+                }
+            }
+            nrGasite = rezultate.Count;
+            return rezultate.ToArray();
+        }
         public Vehicul GetVehiculByIndex(int index)
         {
             try

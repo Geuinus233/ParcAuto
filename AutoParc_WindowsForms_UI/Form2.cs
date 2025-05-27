@@ -12,10 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MetroFramework.Forms;
 namespace AutoParc_WindowsForms_UI
 {
-    public partial class Form2 : Form
+    public partial class Form2 : MetroForm
     {
         private AdministrareVehicule_FisierText gestiuneAuto;
         ArrayList optiuniSelectate = new ArrayList();
@@ -33,10 +33,7 @@ namespace AutoParc_WindowsForms_UI
         private void btnSave_Click(object sender, EventArgs e)
         {
             
-            lblEroareID.Text = "";
-            lblEroareMarca.Text = "";
-            lblEroareModel.Text = "";
-            lblEroareAnul.Text = "";
+            
 
             // Validare date
             if (!Validare())
@@ -52,7 +49,14 @@ namespace AutoParc_WindowsForms_UI
             Culoare dimensiuneSelectata = GetCuloareSelectata();
 
             ArrayList OptiuniVehicule = new ArrayList();
-            OptiuniVehicule.AddRange(optiuniSelectate);
+            if (optiuniSelectate.Count == 0)
+            {
+                OptiuniVehicule.Add("Niciuna");
+            }
+            else
+            {
+                OptiuniVehicule.AddRange(optiuniSelectate);
+            }
 
             Vehicul vehicul = new Vehicul(id, marca, model, anul,numarInmatriculare, stareTehnica, dimensiuneSelectata, OptiuniVehicule);
             gestiuneAuto.AddVehicul(vehicul);
@@ -68,48 +72,32 @@ namespace AutoParc_WindowsForms_UI
                 return Culoare.Verde;
             else if (rdbAlbastru.Checked)
                 return Culoare.Albastru;
+            else if (rdbAlb.Checked)
+                return Culoare.Alb;
             else
                 return Culoare.Necunoscut;
         }
-        
-        
-        
-        
+
+
         private bool Validare()
         {
-            bool valid = true;
-
-            if (string.IsNullOrWhiteSpace(txtID.Text) || !int.TryParse(txtID.Text, out _))
+            var controale = new ValidareDate.ControaleVehicul
             {
-                
-                lblEroareID.Text = "ID trebuie să fie un număr întreg!";
-                ForeColor = Color.Red;
-                valid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtMarca.Text))
-            {
-                lblEroareMarca.Text = "Marca nu poate fi goală!";
-                ForeColor = Color.Red;
-                valid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtModel.Text))
-            {
-                lblEroareModel.Text = "Modelul nu poate fi gol!";
-                ForeColor = Color.Red;
-                valid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtAnul.Text) || !int.TryParse(txtAnul.Text, out _))
-            {
-                lblEroareAnul.Text = "Anul trebuie să fie un număr întreg!";
-                ForeColor = Color.Red;
-                valid = false;
-            }
-
-            return valid;
+                TxtID = txtID,
+                TxtMarca = txtMarca,
+                TxtModel = txtModel,
+                TxtAnul = txtAnul,
+                TxtNrDeIm = txtNrDeIm,
+                TxtStare = txtStare,
+                RdbRed = rdbRed,
+                RdbVerde = rdbVerde,
+                RdbAlbastru = rdbAlbastru,
+                RdbAlba = rdbAlb
+            };
+            return ValidareDate.Valideaza(controale);
         }
+
+
 
         private void CkbOptiuniVehicule_CheckedChanged(object sender, EventArgs e)
         {
@@ -123,10 +111,7 @@ namespace AutoParc_WindowsForms_UI
                 optiuniSelectate.Remove(optiuneSelectata);
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
 

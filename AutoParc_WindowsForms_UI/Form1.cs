@@ -8,11 +8,11 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Data;
 using System.Collections;
-
+using MetroFramework.Forms;
 
 namespace AutoParc_WindowsForms_UI
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroForm
     {
         private AdministrareVehicule_FisierText gestiuneAuto;
 
@@ -112,20 +112,11 @@ namespace AutoParc_WindowsForms_UI
             this.Controls.Add(label);
         }
 
-
-        private void AfisareMasiniInControlDataGridView()
+        private void AfisareVehiculeInGrid(Vehicul[] vehicule)
         {
             dataGridVeh.DataSource = null;
-            Vehicul[] vehicule = gestiuneAuto.GetVehicule(out int nrVehicule);
-
-            if (vehicule.Length == 0)
-            {
-                MessageBox.Show("Nu exista studenti in fisier!");
-                return;
-            }
 
             DataTable dataTable = new DataTable();
-
             dataTable.Columns.Add("ID");
             dataTable.Columns.Add("Marca");
             dataTable.Columns.Add("Model");
@@ -134,6 +125,7 @@ namespace AutoParc_WindowsForms_UI
             dataTable.Columns.Add("Stare Tehnica");
             dataTable.Columns.Add("Culoare");
             dataTable.Columns.Add("Optiuni");
+
             foreach (Vehicul vehicul in vehicule)
             {
                 DataRow row = dataTable.NewRow();
@@ -145,7 +137,6 @@ namespace AutoParc_WindowsForms_UI
                 row["Stare Tehnica"] = vehicul.StareTehnica;
                 row["Culoare"] = vehicul.GetCuloareToString();
                 row["Optiuni"] = vehicul.OptiuniVehiculeToString();
-
                 dataTable.Rows.Add(row);
             }
 
@@ -154,18 +145,24 @@ namespace AutoParc_WindowsForms_UI
 
 
 
+        
 
 
         private void btnRefresh_Click_1(object sender, EventArgs e)
         {
+            // Refresh the grid after deletion
             Vehicul[] vehicule = gestiuneAuto.GetVehicule(out int nrVehicule);
-            AfisareMasiniInControlDataGridView();
+            AfisareVehiculeInGrid(vehicule);
         }
 
         private void btnCautare_Click(object sender, EventArgs e)
         {
             Form3 form3 = new Form3();
-            form3.Show();
+            if (form3.ShowDialog() == DialogResult.OK && form3.VehiculeGasite != null)
+            {
+                // Convert List<Vehicul> to Vehicul[] to match the method signature
+                AfisareVehiculeInGrid(form3.VehiculeGasite.ToArray());
+            }
         }
 
         private void btnMod_Click(object sender, EventArgs e)
@@ -178,6 +175,35 @@ namespace AutoParc_WindowsForms_UI
             
             FormModificare form5 = new FormModificare(Convert.ToInt32(dataGridVeh.CurrentRow.Cells[0].Value));
             form5.Show();
+        }
+
+        private void btnSterg_Click(object sender, EventArgs e)
+        {
+            if (dataGridVeh.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selectați un vehicul pentru a-l șterge.");
+                return;
+            }
+
+            int id = Convert.ToInt32(dataGridVeh.CurrentRow.Cells["ID"].Value);
+
+            var confirmResult = MessageBox.Show("Sigur doriți să ștergeți acest vehicul?", "Confirmare ștergere", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                bool rezultat = gestiuneAuto.StergeVehicul(id);
+                if (rezultat)
+                {
+                    MessageBox.Show("Vehicul șters cu succes!");
+
+                    // Fix: Pass the required parameter 'vehicule' to the method  
+                    Vehicul[] vehicule = gestiuneAuto.GetVehicule(out int nrVehicule);
+                    AfisareVehiculeInGrid(vehicule);
+                }
+                else
+                {
+                    MessageBox.Show("Vehiculul nu a putut fi șters (nu a fost găsit).");
+                }
+            }
         }
     }
 }

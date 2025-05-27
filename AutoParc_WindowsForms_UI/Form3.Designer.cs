@@ -1,16 +1,10 @@
-﻿namespace AutoParc_WindowsForms_UI
+﻿using MetroFramework.Controls;
+namespace AutoParc_WindowsForms_UI
 {
     partial class Form3
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,63 +16,96 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.lblID = new System.Windows.Forms.Label();
-            this.btnCauta = new System.Windows.Forms.Button();
-            this.txtID = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
+            this.btnCauta = new MetroFramework.Controls.MetroButton();
+            this.txtModel = new MetroFramework.Controls.MetroTextBox();
+            this.label1 = new MetroFramework.Controls.MetroLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(83, 59);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(18, 13);
-            this.lblID.TabIndex = 0;
-            this.lblID.Text = "ID";
             // 
             // btnCauta
             // 
-            this.btnCauta.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCauta.Location = new System.Drawing.Point(86, 132);
+            this.btnCauta.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnCauta.Location = new System.Drawing.Point(12, 344);
             this.btnCauta.Name = "btnCauta";
             this.btnCauta.Size = new System.Drawing.Size(93, 37);
             this.btnCauta.TabIndex = 1;
             this.btnCauta.Text = "Cauta";
-            this.btnCauta.UseVisualStyleBackColor = true;
+            this.btnCauta.UseSelectable = true;
             this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
             // 
-            // txtID
+            // txtModel
             // 
-            this.txtID.Location = new System.Drawing.Point(132, 56);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 20);
-            this.txtID.TabIndex = 2;
+            // 
+            // 
+            // 
+            this.txtModel.CustomButton.Image = null;
+            this.txtModel.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.txtModel.CustomButton.Name = "";
+            this.txtModel.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtModel.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtModel.CustomButton.TabIndex = 1;
+            this.txtModel.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtModel.CustomButton.UseSelectable = true;
+            this.txtModel.CustomButton.Visible = false;
+            this.txtModel.Lines = new string[0];
+            this.txtModel.Location = new System.Drawing.Point(126, 83);
+            this.txtModel.MaxLength = 32767;
+            this.txtModel.Name = "txtModel";
+            this.txtModel.PasswordChar = '\0';
+            this.txtModel.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtModel.SelectedText = "";
+            this.txtModel.SelectionLength = 0;
+            this.txtModel.SelectionStart = 0;
+            this.txtModel.ShortcutsEnabled = true;
+            this.txtModel.Size = new System.Drawing.Size(100, 23);
+            this.txtModel.TabIndex = 3;
+            this.txtModel.UseSelectable = true;
+            this.txtModel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtModel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 19);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Introdu modelul";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(15, 18);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(69, 66);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtModel);
             this.Controls.Add(this.btnCauta);
-            this.Controls.Add(this.lblID);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Style = MetroFramework.MetroColorStyle.Teal;
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.Button btnCauta;
-        private System.Windows.Forms.TextBox txtID;
+        private MetroButton btnCauta;
+        private MetroTextBox txtModel;
+        private MetroLabel label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

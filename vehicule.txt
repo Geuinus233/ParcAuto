@@ -1,2 +1,3 @@
-1;Audi;A6 3.0d;2018;HD888AUD;Normala;Rosu;Cruise control,Android Auto/ Apple CarPlay,Camera 360°,Senzori de parcare,Incalzire scaune,Keyless Entry & Start
+1;Audi;A6 3.0;2019;SV952SVG;Perfecta;Verde;Incalzire scaune,Cruise control,Android Auto/ Apple CarPlay,Camera 360°
 2;Dacia;Logan;2019;B952SVH;Perfecta;Albastru;Android Auto/ Apple CarPlay,Camera 360°,Cruise control,Incalzire scaune
+3;Mercedes;CLS 300d;2017;SV777BAD;Normala;Albastru;Incalzire scaune,Cruise control,Android Auto/ Apple CarPlay,Camera 360°,Senzori de parcare,Keyless Entry & Start

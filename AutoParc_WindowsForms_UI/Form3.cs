@@ -11,10 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace AutoParc_WindowsForms_UI
 {
-    public partial class Form3 : Form
+    public partial class Form3 : MetroForm
     {
         private AdministrareVehicule_FisierText gestiuneAuto;
         public Form3()
@@ -26,22 +27,33 @@ namespace AutoParc_WindowsForms_UI
 
             gestiuneAuto = new AdministrareVehicule_FisierText(caleCompletaFisierVehicule);
         }
+        public List<Vehicul> VehiculeGasite { get; set; }
 
         private void btnCauta_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtID.Text) && int.TryParse(txtID.Text, out int ID))
-            {
-                Vehicul IDgasit = gestiuneAuto.GetCar(ID);
+            string modelCautat = txtModel.Text.Trim();
 
-                if (IDgasit != null)
-                {
-                    MessageBox.Show(IDgasit.Info(), "Vehicul gasit");
-                }
-                else
-                {
-                    MessageBox.Show("Comanda cu ID-ul specificat nu a fost gasita.");
-                }
+            if (string.IsNullOrWhiteSpace(modelCautat))
+            {
+                MessageBox.Show("Introduceți un model pentru căutare.", "Eroare de validare");
+                return;
+            }
+
+            Vehicul[] vehiculeGasite = gestiuneAuto.CautaVehiculeDupaModel(modelCautat, out int nrGasite);
+
+            if (nrGasite > 0)
+            {
+                VehiculeGasite = vehiculeGasite.ToList();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Nu a fost găsit niciun vehicul cu modelul specificat.");
+                txtModel.Text = string.Empty;
             }
         }
+
+
     }
 }
